@@ -15,7 +15,8 @@ CRGB leds[NUM_LEDS];
 #include "functions.h"
 
 
-void setup() {
+void setup() 
+{
     delay(1000);
     LEDS.addLeds<LED_TYPE, LED_PIN, COLOR_ORDER>(leds, NUM_LEDS).setCorrection(TypicalPixelString);
     FastLED.setBrightness(BRIGHTNESS);
@@ -26,24 +27,11 @@ void setup() {
 
 void loop()
 {   
-    int a;
     
-    if(digitalRead(6) == HIGH)
-    a = 0;
+    if(digitalRead(6) == LOW)
+    freccia(2);
     
-    if(digitalRead(2) == HIGH)
-    a = 1;
-    
-
-    switch(a){
-
-      case 0: freccia(2);
-                break;
-
-      case 1: freccia(1);
-                break;
-
-      default:  drl();
-                break;
-    }
+    if(digitalRead(2) == LOW)
+    freccia(1);
+ 
 }
