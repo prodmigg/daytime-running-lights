@@ -11,19 +11,21 @@ void drl(){
 
 void accensione(){
   // gioco di luci alla prima accensione del sistema
-
+for(int i = 0; i<2; i++){
   for(int i = 0; i<=9; i++){
     leds[9-i] =  CRGB::White;
     leds[10+i] = CRGB::White;
     leds[30+i] = CRGB::Red;
     leds[29-i] = CRGB::Red;
-    FastLED.show();
-    FastLED.delay(40);
+    
+    FastLED.delay(50);
     leds[9-i] =  CRGB::Black;
     leds[10+i] = CRGB::Black;
     leds[30+i] = CRGB::Black;
     leds[29-i] = CRGB::Black;
-    FastLED.delay(40);
+    
+    
+    
   }
 
   for(int i = 0; i<=9; i++){
@@ -31,13 +33,14 @@ void accensione(){
     leds[19-i] = CRGB::White;
     leds[39-i] = CRGB::Red;
     leds[20+i] = CRGB::Red;
-    FastLED.show();
-    FastLED.delay(40);
+    
+    FastLED.delay(50);
     leds[i]    = CRGB::Black;
     leds[19-i] = CRGB::Black;
     leds[39-i] = CRGB::Black;
     leds[20+i] = CRGB::Black;
-    FastLED.delay(40);
+   
+  } 
   }
 
   for(int i = 0; i<=9; i++){
@@ -45,8 +48,7 @@ void accensione(){
     leds[10+i] = CRGB::White;
     leds[30+i] = CRGB::Red;
     leds[29-i] = CRGB::Red;
-    FastLED.show();
-    FastLED.delay(40);
+    FastLED.delay(60);
   }
 }
 
@@ -58,7 +60,6 @@ void freccia(int sxdx){
     case 1: for(int i=0; i<=9; i++){        //freccia sinistra
               leds[9-i] =  CRGB(255,70,0);
               leds[30+i] = CRGB(255,70,0);
-              FastLED.show();
               FastLED.delay(30);
 
             if(i==9){
@@ -67,7 +68,6 @@ void freccia(int sxdx){
                 leds[i] =    CRGB::Black;
                 leds[30+i] = CRGB::Black;
               }
-            FastLED.show();
             FastLED.delay(350);
             }
             }
@@ -76,7 +76,6 @@ void freccia(int sxdx){
     case 2: for(int i=10; i<=19; i++){      //freccia destra
             leds[i] =    CRGB(255,70,0);
             leds[39-i] = CRGB(255,70,0);
-            FastLED.show();
             FastLED.delay(30);
    
             if(i==19){
@@ -85,7 +84,6 @@ void freccia(int sxdx){
                 leds[i] =    CRGB::Black;
                 leds[39-i] = CRGB::Black;
               }
-            FastLED.show();
             FastLED.delay(350);
             }
             }

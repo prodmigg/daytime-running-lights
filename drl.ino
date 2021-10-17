@@ -4,34 +4,42 @@
  */
  
 #include <FastLED.h>
-#define LED_PIN     7 
+#define LED_PIN     3 
 #define NUM_LEDS    40
 #define LED_TYPE    WS2812B
 #define COLOR_ORDER RGB
-#define BRIGHTNESS  240
+#define SX          11
+#define DX          9
+#define BRIGHTNESS  253
 
 CRGB leds[NUM_LEDS]; 
 
 #include "functions.h"
 
-
-void setup() 
-{
+void setup() {
     delay(1000);
+    Serial.begin(9600);
     LEDS.addLeds<LED_TYPE, LED_PIN, COLOR_ORDER>(leds, NUM_LEDS).setCorrection(TypicalPixelString);
     FastLED.setBrightness(BRIGHTNESS);
-    pinMode(2, INPUT_PULLUP);  //freccia sinistra
-    pinMode(6, INPUT_PULLUP);  //freccia destra
+    pinMode(SX, INPUT_PULLUP);  //freccia sinistra
+    pinMode(DX, INPUT_PULLUP);  //freccia destra
     accensione();
 }
 
 void loop()
-{   
+{  
     
-    if(digitalRead(6) == LOW)
-    freccia(2);
-    
-    if(digitalRead(2) == LOW)
+    if(digitalRead(SX) == LOW){
+      Serial.println("Sinistra");
     freccia(1);
- 
+    }
+    
+    else if(digitalRead(DX) == LOW){
+      Serial.println("Destra");
+    freccia(2);
+    }
+
+    else{drl();}
+    
+    
 }
